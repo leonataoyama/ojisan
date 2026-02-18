@@ -410,6 +410,26 @@
             resScreen.classList.remove('hidden');
             resScreen.classList.add('fade-in');
 
+            let maxScore = -1;
+            let resultType = 'blue';
+            for (const [key, value] of Object.entries(scores)) {
+                if (value > maxScore) {
+                    maxScore = value;
+                    resultType = key;
+                }
+            }
+
+            const data = typeInfo[resultType];
+
+            // --- ★ここから追加：Googleアナリティクスに結果を送信 ---
+            gtag('event', 'diagnosis_result', {
+                'result_type': resultType,    // タイプ名（blue, red等）
+                'result_name': data.name      // 表示名
+            });
+            // --- ここまで ---
+
+            document.getElementById('result-name').innerText = data.name;
+
             // 最高得点の判定（同点の場合は順不同で最初のもの）
             let maxScore = -1;
             let resultType = 'blue';
@@ -444,6 +464,7 @@
 </body>
 
 </html>
+
 
 
 
