@@ -13,168 +13,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ヨコ・コミュニケーション診断 | 青山学院大学 内田ゼミ</title>
 
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-    
     <style>
-        /* --- 全体デザイン --- */
-        :root {
-            --bg: #fdfbf7;
-            --text: #333;
-            --accent: #2c3e50;
-            --white: #ffffff;
-            --link: #3498db;
-            
-            /* 診断6色 */
-            --blue: #3498db;
-            --red: #e74c3c;
-            --yellow: #f1c40f;
-            --green: #2ecc71;
-            --orange: #e67e22;
-            --brown: #8d6e63;
-        }
-
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            flex-direction: column;
-        }
-
-        .container {
-            background-color: var(--white);
-            width: 100%;
-            max-width: 600px;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
-
-        .fade-in { animation: fadeIn 0.6s ease forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        :root { --bg: #fdfbf7; --text: #333; --accent: #2c3e50; --white: #ffffff; }
+        body { font-family: sans-serif; background-color: var(--bg); display: flex; justify-content: center; align-items: center; min-height: 100vh; flex-direction: column; margin: 0; }
+        .container { background: var(--white); width: 90%; max-width: 600px; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; }
         .hidden { display: none !important; }
-
-        h1 { font-size: 24px; margin-bottom: 10px; color: var(--accent); }
-        .subtitle { font-size: 14px; color: #7f8c8d; margin-bottom: 30px; line-height: 1.6; }
-
-        .btn-start {
-            background: var(--accent);
-            color: #fff;
-            padding: 16px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
-            transition: transform 0.2s;
-        }
-        .btn-start:hover { transform: translateY(-2px); }
-
-        .progress-bar-container { width: 100%; height: 6px; background: #eee; margin-bottom: 20px; border-radius: 3px; }
-        .progress-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; border-radius: 3px; }
-        
-        .question-text { font-size: 18px; font-weight: bold; margin: 30px 0; min-height: 3em; display:flex; align-items:center; justify-content:center; }
-        
-        .rating-options { display: flex; flex-direction: column; gap: 10px; }
-        .btn-rating {
-            padding: 14px; border: 2px solid #f0f0f0; background: #fff;
-            border-radius: 12px; cursor: pointer; font-weight: bold; transition: all 0.2s;
-            font-size: 15px; color: #555;
-        }
-        .btn-rating:hover { border-color: var(--accent); background: #f9f9f9; color: var(--accent); }
-
-        .type-badge {
-            background: #333; color: white; padding: 5px 15px; border-radius: 20px; 
-            font-size: 12px; display: inline-block; margin-bottom: 10px;
-        }
-        .result-name { font-size: 28px; font-weight: 900; margin: 0 0 10px 0; }
-        
-        .character-img-box {
-            width: 250px; height: 250px; margin: 0 auto 20px;
-            background: #eee; border-radius: 15px; overflow: hidden;
-            border: 4px solid #333;
-        }
-        .character-img-box img { width: 100%; height: 100%; object-fit: cover; }
-
-        .hashtags { margin-bottom: 20px; }
-        .tag {
-            display: inline-block; background: #f0f0f0; color: #555;
-            padding: 5px 12px; border-radius: 8px; font-size: 13px; font-weight: bold; margin: 3px;
-        }
-
-        .column-box {
-            text-align: left; background: #f8f9fa; padding: 20px; border-radius: 15px; margin-top: 30px;
-        }
-        .column-title { font-size: 16px; font-weight: bold; color: var(--accent); border-bottom: 2px solid #ddd; padding-bottom: 5px; margin-bottom: 10px; }
-        .column-text { font-size: 13px; line-height: 1.7; color: #555; margin-bottom: 15px; }
-
-        .advice-box {
-            text-align: left; background: #fff8e1; padding: 20px; border-radius: 15px; margin-top: 20px;
-            border: 2px solid #ffe082;
-        }
-
-        footer {
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
-            font-size: 12px;
-            color: #777;
-            padding-bottom: 20px;
-        }
-        .footer-organizer { font-weight: bold; margin-bottom: 10px; display: block; color: var(--accent); }
-        .footer-links { margin-bottom: 10px; }
-        .footer-links a { color: var(--link); text-decoration: none; margin: 0 8px; }
-        .footer-links a:hover { text-decoration: underline; }
-        .privacy-note { font-size: 11px; color: #999; margin-top: 5px; }
-
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 100;
-            display: flex; justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background: white; padding: 30px; border-radius: 15px;
-            width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto;
-            text-align: left; position: relative;
-        }
-        .close-btn {
-            position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #aaa;
-        }
-        .modal-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .modal-body { font-size: 13px; line-height: 1.6; }
+        .btn-start, .btn-rating { background: var(--accent); color: #fff; padding: 15px 30px; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; margin-top: 10px; width: 100%; }
+        .btn-rating { background: #fff; color: #333; border: 2px solid #eee; margin-bottom: 10px; }
+        .question-text { font-size: 1.2rem; font-weight: bold; margin: 30px 0; }
+        .progress-bar-container { width: 100%; height: 8px; background: #eee; border-radius: 4px; margin-bottom: 20px; }
+        .progress-bar { height: 100%; background: var(--accent); width: 0%; transition: 0.3s; border-radius: 4px; }
     </style>
 </head>
 <body>
 
-    <div id="main-container" class="container fade-in">
+    <div class="container">
         <div id="start-screen">
-            <div style="font-size: 50px; margin-bottom: 10px;">🍻</div>
             <h1>ヨコ・コミュニケーション診断</h1>
-            <p class="subtitle">
-                会社の名刺を置いた後、あなたはどう人と繋がる？<br>
-                6つのタイプから、あなたの「人付き合いのクセ」を見つけ、<br>
-                退職後の孤独リスクに備えるヒントを探ります。
-            </p>
+            <p>退職後の「孤独リスク」に備えるヒントを探ります。</p>
             <button class="btn-start" onclick="startDiagnosis()">診断を始める</button>
         </div>
 
         <div id="quiz-screen" class="hidden">
             <div class="progress-bar-container"><div id="progress-fill" class="progress-bar"></div></div>
-            <div style="text-align: right; font-size: 12px; color: #999;">
-                <span id="q-current">1</span> / 30問
-            </div>
-            <div id="question-text" class="question-text">質問文</div>
+            <div id="question-text" class="question-text">質問がここに表示されます</div>
             <div class="rating-options">
                 <button class="btn-rating" onclick="answer(5)">5. 当てはまる</button>
                 <button class="btn-rating" onclick="answer(4)">4. やや当てはまる</button>
@@ -185,149 +47,51 @@
         </div>
 
         <div id="result-screen" class="hidden">
-            <div class="type-badge">あなたのタイプ</div>
-            <h2 id="result-name" class="result-name">タイプ名</h2>
-            
-            <div id="char-img-box" class="character-img-box">
-                <img id="char-img" src="" alt="診断結果イラスト">
-            </div>
-
-            <div id="result-hashtags" class="hashtags"></div>
-
-            <div id="result-desc" style="font-size: 14px; text-align: left; line-height: 1.8; margin-bottom: 20px;">
-                説明文
-            </div>
-
-            <div class="advice-box" id="advice-box">
-                <div style="font-weight: bold; margin-bottom: 10px; color: #d35400;">💡 あなたへのワンポイント・アドバイス</div>
-                <div id="result-advice" style="font-size: 14px; line-height: 1.6;">アドバイス文</div>
-            </div>
-
-            <div class="column-box">
-                <div class="column-title">📚 なぜ「ヨコ」が必要なのか？</div>
-                <div class="column-text">
-                    <p><strong>「タテのコミュニケーション」とは？</strong><br>
-                    会社組織のような、役割・立場・利害関係に基づく繋がりです。効率的ですが、退職して「役職」を失うと同時に消滅してしまいます。</p>
-                    <p><strong>「ヨコのコミュニケーション」とは？</strong><br>
-                    立場や利害に関係なく、趣味や共感、雑談で繋がるフラットな関係です。「役に立たない話」ができる相手こそが、退職後の心の安定剤になります。</p>
-                    <p><strong>孤独リスクとの関係</strong><br>
-                    男性はタテの関係に依存しやすく、定年後に「会話する相手が誰もいない」という状況に陥りやすい傾向があります。この診断で自分のクセを知り、少しずつ「ヨコ」へシフトチェンジしていきましょう。</p>
-                </div>
-            </div>
-            <button class="btn-start" style="margin-top: 20px; font-size: 14px;" onclick="location.reload()">トップに戻る</button>
-        </div>
-    </div>
-
-    <footer>
-        <span class="footer-organizer">主催：青山学院大学 国際政治経済学部 内田ゼミ</span>
-        <div class="footer-links">
-            <a href="javascript:void(0)" onclick="openModal('about-modal')">内田ゼミについて</a> |
-            <a href="https://forms.gle/rSfXSWjx1iW2CrbP8" target="_blank">ご意見・お問い合わせ</a> |
-            <a href="javascript:void(0)" onclick="openModal('privacy-modal')">情報の利用について</a>
-        </div>
-        <p class="privacy-note">※本サイトではサービスの改善および利用状況の把握のため、Google アナリティクスを利用してアクセスデータの収集を行っています。これらのデータは匿名で収集されており、個人を特定するものではありません。</p>
-    </footer>
-
-    <div id="about-modal" class="modal-overlay hidden" onclick="closeModal(event, 'about-modal')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-btn" onclick="closeModal(null, 'about-modal')">&times;</span>
-            <div class="modal-title">内田ゼミについて</div>
-            <div class="modal-body">
-                <p>青山学院大学 国際政治経済学部 国際経済学科 内田ゼミ27期生によるプロジェクトです。</p>
-                <p>私たちは「経済学×デザイン思考」を用いて社会課題の解決に取り組んでいます。本プロジェクトは、定年退職後の男性が直面する「孤独問題」に対し、現役時代から「ヨコ・コミュニケーション」の重要性に気づいてもらうことを目的としています。</p>
-                <p style="margin-top:15px; border-top: 1px solid #eee; padding-top: 10px;">
-                    <strong>📚 参考文献・理論的背景</strong><br>
-                    本診断のロジックは、中央大学ビジネススクール教授陣による著書『コミュニケーションのもどかしさがなくなる本』（日経BP）および同理論を参考に開発されました。
-                </p>
-                <p style="margin-top:15px;">公式インスタグラム: <a href="https://www.instagram.com/uchida_sipec/" target="_blank">@uchida_sipec</a></p>
-            </div>
-        </div>
-    </div>
-
-    <div id="privacy-modal" class="modal-overlay hidden" onclick="closeModal(event, 'privacy-modal')">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-btn" onclick="closeModal(null, 'privacy-modal')">&times;</span>
-            <div class="modal-title">情報の利用について</div>
-            <div class="modal-body">
-                <p><strong>1. アクセス解析について</strong><br>本サイトでは、サービス向上のため、Google Analytics等を用いて統計データを収集する場合があります。個人を特定するものではありません。</p>
-                <p><strong>2. 個人情報の取り扱い</strong><br>本診断において個人情報を入力していただくことはありません。診断結果はブラウザ上でのみ処理されます。</p>
-                <p><strong>3. 免責事項</strong><br>本診断結果は、あくまでコミュニケーションの傾向を知るための参考情報です。</p>
-            </div>
+            <h2>診断結果</h2>
+            <div id="result-name" style="font-size: 24px; font-weight: bold;"></div>
+            <p id="result-desc"></p>
+            <button class="btn-start" onclick="location.reload()">もう一度やる</button>
         </div>
     </div>
 
     <script>
-        // --- モーダル制御 ---
-        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
-        function closeModal(event, id) {
-            if (event === null || event.target.id === id || event.target.classList.contains('close-btn')) {
-                document.getElementById(id).classList.add('hidden');
-            }
-        }
-
-        // --- 質問データ ---
+        // 質問データ
         const questions = [
             { text: "1. 他の人が単調だと思う作業でも、黙々とこなすことができる", type: "green" },
-            { text: "2. 具体的な指示があるまで、余計な行動はとらないようにする", type: "green" },
-            { text: "3. 誰にも邪魔されず、自分の世界に浸れる環境と時間を好む", type: "green" },
-            { text: "4. 目立つことはせず、ただ平穏に時の流れに身を委ねる人生を送りたい", type: "green" },
-            { text: "5. 輪の中心になることや、注目を浴びることがとても苦手だ", type: "green" },
-            { text: "6. リスクを負ってでも挑戦することが人生だ", type: "red" },
-            { text: "7. 常に「やってみないとわからない」と思うし、行動こそ全てだ", type: "red" },
-            { text: "8. 決断力に欠け、理屈ばかりで行動が遅い人に対し嫌悪を抱く", type: "red" },
-            { text: "9. 要領が良く、何でもそれなりにうまくこなせる", type: "red" },
-            { text: "10. 狙った獲物は手に入れられるという自信がある", type: "red" },
-            { text: "11. 自分の意見や価値観をとても大切にしている", type: "brown" },
-            { text: "12. 自分の正義や信念に反することにはっきりと反論する", type: "brown" },
-            { text: "13. 困難な状況でも、諦めずに信念を貫けば、必ず道は開ける", type: "brown" },
-            { text: "14. あいさつや礼儀を重んじ、熱く語り合えるような人との交流を好む", type: "brown" },
-            { text: "15. お互いに信頼関係を構築することはとても大切だ", type: "brown" },
-            { text: "16. とてもノリが良く、いつも冗談を言い合える人が好き", type: "yellow" },
-            { text: "17. 型にはまらず自由な発想で創造性を求められる仕事が好き", type: "yellow" },
-            { text: "18. 理屈や裏付けなどを質問されると「めんどうくさい」と感じる", type: "yellow" },
-            { text: "19. 好き／嫌い、やりたい／やりたくない、で物事を判断する", type: "yellow" },
-            { text: "20. 重苦しい空気が流れていると、冗談を言いたくなることがある", type: "yellow" },
-            { text: "21. 有益な情報や考え方を共有できる相手を好む", type: "blue" },
-            { text: "22. 計画や段取りが進まないことに対し非常にフラストレーションが溜まる", type: "blue" },
-            { text: "23. 情報を集めて論理的に分析し、課題に取り組むことが得意だ", type: "blue" },
-            { text: "24. 何の考えもなくその時の感情だけで物事を判断する人が理解できない", type: "blue" },
-            { text: "25. 努力をしても、成果を出せなければまったく意味がない", type: "blue" },
-            { text: "26. ホッとする時間や、癒される空間を好む", type: "orange" },
-            { text: "27. 仲の良い友達と、たわいもないお話をしたりする時を過ごすのが好き", type: "orange" },
-            { text: "28. 周囲に受け入れられていないと感じると、とても不安になる", type: "orange" },
-            { text: "29. 他人から必要とされ、大切にされたい。周りにもそうしたい", type: "orange" },
-            { text: "30. 互いを思いやり、親密で温かみのある交友関係は何よりも大切だと思う", type: "orange" }
+            { text: "2. 具体的な指示があるまで、余計な行動はとらない", type: "green" }
+            // 本番ではここに30問入れてください
         ];
 
-        // --- 結果データ ---
+        // 結果データ
         const typeInfo = {
-            blue: { name: "【青】知識探究・コンセプチャー", color: "#3498db", tags: ["#論理", "#分析", "#事実", "#計画"], desc: "事実やデータを重視する知的生産タイプ。結論のない無駄話を少し苦手とする傾向があります。", advice: "会話に結論を求めない練習をしましょう。何気ない雑談が「ヨコ」の繋がりの第一歩です。", img: "favicon.png" },
-            red: { name: "【赤】生涯現役・ブレイバー", color: "#e74c3c", tags: ["#行動", "#結果", "#情熱", "#勝利"], desc: "「行動こそ全て」のリーダータイプ。退職後も周囲と競ってしまうことがあります。", advice: "マウントを取らず、自分のエネルギーを地域への「奉仕」に使ってみると新しい扉が開きます。", img: "favicon.png" },
-            yellow: { name: "【黄】自由奔放・ムーバー", color: "#f1c40f", tags: ["#自由", "#楽しい", "#アイデア", "#感覚"], desc: "楽しいことが大好きな自由人。束縛を嫌い、直感で動くユーモアあふれるタイプです。", advice: "深い関係を築くために、冗談だけでなく少しだけ自分の「弱み」を話してみるのがおすすめです。", img: "favicon.png" },
-            green: { name: "【緑】マイペース・ソーサー", color: "#2ecc71", tags: ["#平和", "#自分の世界", "#安定", "#観察"], desc: "争いを好まず一人の時間を大切にするタイプ。自分から話しかけるのは少し苦手かもしれません。", advice: "「挨拶＋一言」だけでOKです。あなたの穏やかな雰囲気は周囲に安心感を与えています。", img: "favicon.png" },
-            orange: { name: "【橙】人情派・アコーダー", color: "#e67e22", tags: ["#共感", "#調和", "#繋がり", "#仲間"], desc: "人との繋がりがエネルギー源。周囲に気を使う温かい人ですが、依存しすぎに注意です。", advice: "「自分のための趣味」を持ちましょう。一人でも楽しめる場所があると、心の安定が最強になります。", img: "favicon.png" },
-            brown: { name: "【茶】頑固一徹・ディレクター", color: "#8d6e63", tags: ["#価値観", "#信念", "#責任", "#正義"], desc: "信念と正義感が強い重鎮タイプ。信頼されますが、マイルールを押し付けがちな一面も。", advice: "「それもアリだね」を口癖に。正解のないヨコの世界を楽しむ柔軟性が、あなたの魅力を高めます。", img: "favicon.png" }
+            green: { name: "【緑】マイペース派", desc: "穏やかな性格です。" },
+            blue: { name: "【青】論理派", desc: "知的なタイプです。" }
+            // 他のタイプも同様に追加
         };
 
-        let scores = { blue: 0, red: 0, yellow: 0, green: 0, orange: 0, brown: 0 };
         let currentIdx = 0;
+        let scores = { green: 0, blue: 0, red: 0, yellow: 0, orange: 0, brown: 0 };
 
+        // ★ボタンを押した時に動く関数
         function startDiagnosis() {
+            console.log("診断スタート！"); // デバッグ用
             document.getElementById('start-screen').classList.add('hidden');
             document.getElementById('quiz-screen').classList.remove('hidden');
             showQuestion();
         }
 
         function showQuestion() {
-            const q = questions[currentIdx];
-            document.getElementById('q-current').innerText = currentIdx + 1;
-            document.getElementById('question-text').innerText = q.text;
-            document.getElementById('progress-fill').style.width = (currentIdx / questions.length) * 100 + "%";
+            if (currentIdx < questions.length) {
+                document.getElementById('question-text').innerText = questions[currentIdx].text;
+                document.getElementById('progress-fill').style.width = (currentIdx / questions.length) * 100 + "%";
+            }
         }
 
         function answer(point) {
-            scores[questions[currentIdx].type] += point;
+            const type = questions[currentIdx].type;
+            scores[type] += point;
             currentIdx++;
+
             if (currentIdx < questions.length) {
                 showQuestion();
             } else {
@@ -337,45 +101,12 @@
 
         function showResult() {
             document.getElementById('quiz-screen').classList.add('hidden');
-            const resScreen = document.getElementById('result-screen');
-            resScreen.classList.remove('hidden');
-            resScreen.classList.add('fade-in');
-
-            // スコア判定
-            let maxScore = -1;
-            let resultType = 'blue';
-            for (const [key, value] of Object.entries(scores)) {
-                if (value > maxScore) {
-                    maxScore = value;
-                    resultType = key;
-                }
-            }
-
-            const data = typeInfo[resultType];
-
-            // GA4送信
-            gtag('event', 'diagnosis_result', {
-                'result_type': resultType,
-                'result_name': data.name
-            });
-
-            // 画面反映
-            document.getElementById('result-name').innerText = data.name;
-            document.getElementById('result-name').style.color = data.color;
-            document.getElementById('result-desc').innerText = data.desc;
-            document.getElementById('result-advice').innerText = data.advice;
-            document.getElementById('char-img').src = data.img;
-            document.getElementById('char-img-box').style.borderColor = data.color;
-
-            // ハッシュタグ
-            const tagContainer = document.getElementById('result-hashtags');
-            tagContainer.innerHTML = "";
-            data.tags.forEach(tag => {
-                const span = document.createElement('span');
-                span.className = "tag";
-                span.innerText = tag;
-                tagContainer.appendChild(span);
-            });
+            document.getElementById('result-screen').classList.remove('hidden');
+            
+            // スコア集計ロジック（簡易版）
+            let resultType = 'green'; 
+            document.getElementById('result-name').innerText = typeInfo[resultType].name;
+            document.getElementById('result-desc').innerText = typeInfo[resultType].desc;
         }
     </script>
 </body>
