@@ -16,7 +16,6 @@
     <link rel="icon" href="favicon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* --- デザイン設定 --- */
         :root {
             --bg: #fdfbf7; --text: #333; --accent: #2c3e50; --white: #ffffff; --link: #3498db;
             --blue: #3498db; --red: #e74c3c; --yellow: #f1c40f; --green: #2ecc71; --orange: #e67e22; --brown: #8d6e63;
@@ -41,7 +40,6 @@
         }
         .btn-start:hover { transform: translateY(-2px); }
 
-        /* 質問画面 */
         .progress-bar-container { width: 100%; height: 6px; background: #eee; margin-bottom: 20px; border-radius: 3px; }
         .progress-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; border-radius: 3px; }
         .question-text { font-size: 18px; font-weight: bold; margin: 30px 0; min-height: 3em; display:flex; align-items:center; justify-content:center; }
@@ -52,7 +50,6 @@
         }
         .btn-rating:hover { border-color: var(--accent); background: #f9f9f9; color: var(--accent); }
 
-        /* 結果画面 */
         .type-badge { background: #333; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; display: inline-block; margin-bottom: 10px; }
         .result-name { font-size: 28px; font-weight: 900; margin: 0 0 10px 0; }
         .character-img-box { width: 250px; height: 250px; margin: 0 auto 20px; background: #eee; border-radius: 15px; overflow: hidden; border: 4px solid #333; }
@@ -63,16 +60,13 @@
         .column-title { font-size: 16px; font-weight: bold; color: var(--accent); border-bottom: 2px solid #ddd; padding-bottom: 5px; margin-bottom: 10px; }
         .column-text { font-size: 13px; line-height: 1.7; color: #555; }
 
-        /* フッター・モーダル */
         footer { width: 100%; max-width: 600px; text-align: center; font-size: 12px; color: #777; padding-bottom: 20px; }
         .footer-organizer { font-weight: bold; margin-bottom: 10px; display: block; color: var(--accent); }
         .footer-links a { color: var(--link); text-decoration: none; margin: 0 8px; }
-        .privacy-note { font-size: 11px; color: #999; margin-top: 5px; }
+        
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 100; display: flex; justify-content: center; align-items: center; }
         .modal-content { background: white; padding: 30px; border-radius: 15px; width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto; text-align: left; position: relative; }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #aaa; }
-        .modal-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .modal-body { font-size: 13px; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -81,7 +75,7 @@
         <div id="start-screen">
             <div style="font-size: 50px; margin-bottom: 10px;">🍻</div>
             <h1>ヨコ・コミュニケーション診断</h1>
-            <p class="subtitle">会社の名刺を置いた後、あなたはどう人と繋がる？<br>6つのタイプから、あなたの「人付き合いのクセ」を見つけ、<br>退職後の孤独リスクに備えるヒントを探ります。</p>
+            <p class="subtitle">会社の名刺を置いた後、あなたはどう人と繋がる？<br>退職後の孤独リスクに備えるヒントを探ります。</p>
             <button class="btn-start" onclick="startDiagnosis()">診断を始める</button>
         </div>
 
@@ -105,14 +99,13 @@
             <div id="result-hashtags" class="hashtags"></div>
             <div id="result-desc" style="font-size: 14px; text-align: left; line-height: 1.8; margin-bottom: 20px;"></div>
             <div class="advice-box">
-                <div style="font-weight: bold; margin-bottom: 10px; color: #d35400;">💡 あなたへのワンポイント・アドバイス</div>
+                <div style="font-weight: bold; margin-bottom: 10px; color: #d35400;">💡 ワンポイント・アドバイス</div>
                 <div id="result-advice" style="font-size: 14px; line-height: 1.6;"></div>
             </div>
             <div class="column-box">
                 <div class="column-title">📚 なぜ「ヨコ」が必要なのか？</div>
                 <div class="column-text">
-                    <p><strong>「タテのコミュニケーション」</strong>：会社のような利害・役割の繋がり。退職すると消えやすい。<br>
-                    <strong>「ヨコのコミュニケーション」</strong>：立場に関係なく趣味や雑談で繋がる関係。退職後の孤独を防ぐ鍵となります。</p>
+                    <p><strong>「タテ」の関係</strong>：会社のような利害関係。退職すると消えやすい。<br><strong>「ヨコ」の関係</strong>：趣味や雑談で繋がるフラットな関係。退職後の心の安定に不可欠です。</p>
                 </div>
             </div>
             <button class="btn-start" style="margin-top: 20px; font-size: 14px;" onclick="location.reload()">トップに戻る</button>
@@ -126,21 +119,16 @@
             <a href="https://forms.gle/rSfXSWjx1iW2CrbP8" target="_blank">ご意見・お問い合わせ</a> |
             <a href="javascript:void(0)" onclick="openModal('privacy-modal')">情報の利用について</a>
         </div>
-        <p class="privacy-note">※Google アナリティクスを利用して匿名でアクセスデータを収集しています。</p>
     </footer>
 
     <div id="about-modal" class="modal-overlay hidden" onclick="closeModal(event, 'about-modal')">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-btn" onclick="closeModal(null, 'about-modal')">&times;</span>
-            <div class="modal-title">内田ゼミについて</div>
-            <div class="modal-body">
-                <p>青山学院大学 国際政治経済学部 国際経済学科 内田ゼミ27期生によるプロジェクトです。</p>
-                <p>私たちは「経済学×デザイン思考」を用いて社会課題の解決に取り組んでいます。本プロジェクトは、定年退職後の男性が直面する「孤独問題」に対し、現役時代から「ヨコ・コミュニケーション」の重要性に気づいてもらうことを目的としています。</p>
-                <p style="margin-top:15px; border-top: 1px solid #eee; padding-top: 10px;">
-                    <strong>📚 参考文献・理論的背景</strong><br>
-                    本診断のロジックは、中央大学ビジネススクール教授陣による著書『コミュニケーションのもどかしさがなくなる本』（日経BP）および同理論を参考に開発されました。
-                </p>
-                <p style="margin-top:15px;">公式インスタグラム: <a href="https://www.instagram.com/uchida_sipec/" target="_blank">@uchida_sipec</a></p>
+            <div style="font-weight:bold; margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:5px;">内田ゼミについて</div>
+            <div style="font-size:13px; line-height:1.6;">
+                <p>青山学院大学 内田ゼミ27期生です。「経済学×デザイン思考」で社会課題解決に取り組んでいます。</p>
+                <p><strong>公式インスタグラム:</strong><br><a href="https://www.instagram.com/uchida_sipec/" target="_blank">@uchida_sipec</a></p>
+                <p><strong>参考文献:</strong><br>『コミュニケーションのもどかしさがなくなる本』（日経BP）の理論を参考にロジックを構成しています。</p>
             </div>
         </div>
     </div>
@@ -148,17 +136,16 @@
     <div id="privacy-modal" class="modal-overlay hidden" onclick="closeModal(event, 'privacy-modal')">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close-btn" onclick="closeModal(null, 'privacy-modal')">&times;</span>
-            <div class="modal-title">情報の利用について</div>
-            <div class="modal-body">
-                <p><strong>1. アクセス解析</strong>：Google Analytics等を用いてサイトの統計データを収集します。個人を特定するものではありません。</p>
-                <p><strong>2. 個人情報</strong>：本診断で名前や連絡先を入力することはありません。結果はブラウザ内でのみ処理されます。</p>
-                <p><strong>3. 免責事項</strong>：本診断結果は参考情報であり、結果に基づく損害について主催者は責任を負いかねます。</p>
+            <div style="font-weight:bold; margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:5px;">情報の取り扱いについて</div>
+            <div style="font-size:13px; line-height:1.6;">
+                <p>・本診断ではGA4を使用し、診断結果の統計データを匿名で収集します。</p>
+                <p>・収集したデータは、ゼミの学術研究およびプロジェクト改善の目的以外には使用しません。</p>
+                <p>・個人を特定する情報は取得いたしません。</p>
             </div>
         </div>
     </div>
 
     <script>
-        // --- 質問データ (30問) ---
         const questions = [
             { text: "1. 他の人が単調だと思う作業でも、黙々とこなすことができる", type: "green" },
             { text: "2. 具体的な指示があるまで、余計な行動はとらないようにする", type: "green" },
@@ -192,14 +179,13 @@
             { text: "30. 互いを思いやり、親密で温かみのある交友関係は何よりも大切だと思う", type: "orange" }
         ];
 
-        // --- 結果データ ---
         const typeInfo = {
-            blue: { name: "【青】知識探究・コンセプチャー", color: "#3498db", tags: ["#論理", "#分析", "#計画"], desc: "事実やデータを重視する知的生産タイプ。結論のない雑談を少し苦手とする傾向があります。", advice: "会話に結論を求めず、「へぇ、楽しそうですね！」と感情に共感する言葉を使ってみてください。", img: "favicon.png" },
-            red: { name: "【赤】生涯現役・ブレイバー", color: "#e74c3c", tags: ["#行動", "#情熱", "#勝利"], desc: "「まずはやってみる」が信条のリーダータイプ。退職後も周囲と競ってしまうことがあります。", advice: "勝ち負けではなく、行事の手伝いなど「奉仕」にその行動力を使ってみてください。", img: "favicon.png" },
-            yellow: { name: "【黄】自由奔放・ムーバー", color: "#f1c40f", tags: ["#自由", "#楽しい", "#アイデア"], desc: "楽しいことが大好きで、束縛を嫌う自由人。発想力豊かですが、深い関係を築くのが苦手かもしれません。", advice: "いつもの冗談に加えて、少しだけ自分の弱みを話すと、相手との距離がグッと縮まります。", img: "favicon.png" },
-            green: { name: "【緑】マイペース・ソーサー", color: "#2ecc71", tags: ["#平和", "#安定", "#観察"], desc: "争いを好まず、一人の時間を大切にするタイプ。自分から積極的に話しかけるのは苦手な傾向です。", advice: "「挨拶＋一言」から始めましょう。天気の話をするだけで十分、周りを安心させています。", img: "favicon.png" },
-            orange: { name: "【橙】人情派・アコーダー", color: "#e67e22", tags: ["#共感", "#仲間", "#繋がり"], desc: "人との繋がりがエネルギー源。退職して「会う人」が減ると、一気に元気を失う恐れがあります。", advice: "「誰かのため」だけでなく、一人でも楽しめる「自分のため」の趣味を一つ確保しましょう。", img: "favicon.png" },
-            brown: { name: "【茶】頑固一徹・ディレクター", color: "#8d6e63", tags: ["#信念", "#正義", "#責任"], desc: "強い信念を持つ重鎮タイプ。信頼されますが、柔軟性に欠けマイルールを押し付けがちな面も。", advice: "「それもアリだね」を口癖に。否定せず受け流す余裕が、地域の頼れるご意見番になります。", img: "favicon.png" }
+            blue: { name: "【青】知識探究・コンセプチャー", color: "#3498db", tags: ["#論理", "#分析"], desc: "事実やデータを重視する知的生産タイプ。", advice: "結論を急がず、感情に共感する言葉を使ってみてください。", img: "favicon.png" },
+            red: { name: "【赤】生涯現役・ブレイバー", color: "#e74c3c", tags: ["#行動", "#情熱"], desc: "「まずはやってみる」が信条の情熱タイプ。", advice: "その行動力を「地域の奉仕」に使ってみてください。", img: "favicon.png" },
+            yellow: { name: "【黄】自由奔放・ムーバー", color: "#f1c40f", tags: ["#自由", "#アイデア"], desc: "楽しいことが大好きで、束縛を嫌う自由人。", advice: "少しだけ自分の弱みを話すと、相手との距離が縮まります。", img: "favicon.png" },
+            green: { name: "【緑】マイペース・ソーサー", color: "#2ecc71", tags: ["#平和", "#安定"], desc: "争いを好まず一人の時間を大切にします。", advice: "「挨拶＋一言」から始めてみましょう。", img: "favicon.png" },
+            orange: { name: "【橙】人情派・アコーダー", color: "#e67e22", tags: ["#共感", "#仲間"], desc: "人との繋がりがエネルギー源です。", advice: "一人でも楽しめる趣味を一つ確保すると安心です。", img: "favicon.png" },
+            brown: { name: "【茶】頑固一徹・ディレクター", color: "#8d6e63", tags: ["#信念", "#正義"], desc: "強い信念を持つ、頼れる重鎮タイプ。", advice: "「それもアリだね」を口癖にしてみてください。", img: "favicon.png" }
         };
 
         let scores = { blue: 0, red: 0, yellow: 0, green: 0, orange: 0, brown: 0 };
@@ -231,12 +217,15 @@
         function showResult() {
             document.getElementById('quiz-screen').classList.add('hidden');
             document.getElementById('result-screen').classList.remove('hidden');
-            document.getElementById('result-screen').classList.add('fade-in');
 
+            // ★全タイプ判定ロジック修正
             let maxScore = -1;
-            let resultType = 'blue';
-            for (const [key, value] of Object.entries(scores)) {
-                if (value > maxScore) { maxScore = value; resultType = key; }
+            let resultType = '';
+            for (const type in scores) {
+                if (scores[type] > maxScore) {
+                    maxScore = scores[type];
+                    resultType = type;
+                }
             }
 
             const data = typeInfo[resultType];
